@@ -9,17 +9,7 @@ const jwtSecret = 'husshh';
 const express = require('express');
 const User = require('./models/User');
 const Post = require('./models/Post');
-/*
-// Edit POST   (the post owner)
-// Delete POST  (the post owner)
-// Post comment to post
-[{
-  userId,
-  content
-}]
-// Query to comments of specific post
-// Edit getAllPosts query to get comment
-*/
+
 
 const schema = buildSchema(`
   "The data the user needs to enter to register"
@@ -52,6 +42,7 @@ const schema = buildSchema(`
     createUser(userData: UserRegistrationInput): User
     loginUser(username: String, password: String): LoginPayload
     postCreate(token:String, content:String): String
+    
   }
 `);
 
@@ -105,7 +96,25 @@ const postsMutation = {
     await post.save();
     return 'Success';
   },
-};
+  editMyPost:()=>{}
+  // Edit POST   (the post owner)
+  ,
+  deleteMyPost:()=>{}
+
+
+// Delete POST  (the post owner)
+
+
+  ,
+  commentOnPost:()=>{}
+//Post comment to post
+//[{
+//userId,
+//content
+//}]
+}
+
+
 
 
 const postsQuery = {
@@ -121,6 +130,12 @@ const postsQuery = {
     const posts = await Post.find({}).populate('userId')
     return posts.map(p => ({ ...p.toJSON(), user: p.userId }))
   },
+getPostComments:()=>{}
+  // Query to comments of specific post
+  
+
+
+
 };
 
 

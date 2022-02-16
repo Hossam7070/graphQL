@@ -28,5 +28,14 @@
     "mongoose": "^6.2.1",
     "nodemon": "^1.14.11",
     "prettier": "^1.10.2"
-  }
+  },
+  "description": "This repository serves as the boilerplate for the GraphQL API that we'll construct together in [GraphQL in Motion](https://livevideo.manning.com/course/32/graphql-in-motion)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hossam7070/graphQL.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hossam7070/graphQL/issues"
+  },
+  "homepage": "https://github.com/Hossam7070/graphQL#readme"
 }
