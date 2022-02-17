@@ -96,10 +96,25 @@ const postsMutation = {
     await post.save();
     return 'Success';
   },
-  editMyPost:()=>{}
+  editMyPost: async ({ content, token }) => {
+    const user = await auth(token);
+    if (!user) return 'Authentication error';
+    const userId = user.id;
+    const post =  Post.findOneAndUpdate({ userId}, {content });
+    
+    return post;
+
   // Edit POST   (the post owner)
+  }
   ,
-  deleteMyPost:()=>{}
+  deleteMyPost:async ({ content, token }) => {
+    const user = await auth(token);
+    if (!user) return 'Authentication error';
+    const userId = user.id;
+    const post =  Post.findOneAndDelete({ userId}, {content });
+    
+    return post;
+  }
 
 
 // Delete POST  (the post owner)
